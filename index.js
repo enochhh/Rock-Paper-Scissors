@@ -1,26 +1,35 @@
 function computerPlay() {
     const weapons = ["rock", "paper", "scissors"];
     const index = Math.floor(Math.random()*weapons.length);
-    console.log(weapons.length)
     return weapons[index];
 }
 
-function playerPlay() {
-    let playerChoice = prompt("Pick one of the following weapons: rock, paper, or scissors! ");
-    playerChoice = playerChoice.toLowerCase();
-    if(playerChoice == "rock" || playerChoice == "paper" || playerChoice == "scissors") {
-        return playerChoice;
-    }
-    else {
-        playerChoice = prompt("Invalid choice. Pick one of the following weapons: rock, paper, or scissors! ");
-        playerChoice = playerChoice.toLowerCase();
-        return playerChoice;
-    }    
-}
+    const rockBtn = document.getElementById('rock');
+    const paperBtn = document.getElementById('paper');
+    const scissorsBtn = document.getElementById('scissors');
 
-function playRound(compSelect, playerSelect) {
-    compSelect = computerPlay();
-    playerSelect = playerPlay();
+    rockBtn.addEventListener("click", playRound);
+    paperBtn.addEventListener("click", playRound);
+    scissorsBtn.addEventListener("click", playRound);
+
+function playRound(e) {
+    const playerSelect = e.currentTarget.innerText;
+    /* I was getting an error in the above line for the longest
+    time because my "currentTarget" was undefined. That is 
+    because, while I was able to console.log it within this (playerPlay --old name)
+    function, I was calling playerPlay in the playRound 
+    function below. I guess the issue is that the event 
+    was not in the scope of the playRound function since that
+    is not the function attached with the eventListener. 
+
+    So it doesn't matter if I store the value of the event 
+    in this function and call this function in another function; 
+    it won't work. 
+    */
+ 
+    const compSelect = computerPlay();
+    console.log(playerSelect);
+    
     if(compSelect == playerSelect) {
         alert(`It's a tie! ${playerSelect} and ${compSelect} are the same.`);
     }
@@ -36,13 +45,29 @@ function playRound(compSelect, playerSelect) {
     else {
         alert(`You Lose! ${compSelect} beats ${playerSelect}`);
     }
-} 
-
-
-function game() {
-    for (i = 0; i < 5; i++) {
-        playRound();
-    }
 }
 
-game();
+// function playRound(compSelect, playerSelect) {
+//     compSelect = computerPlay();
+//     playerSelect = playerPlay();
+    
+//     if(compSelect == playerSelect) {
+//         alert(`It's a tie! ${playerSelect} and ${compSelect} are the same.`);
+//     }
+//     else if(compSelect == "rock" && playerSelect == "paper")  {
+//         alert(`You win! ${playerSelect} beats ${compSelect}`);
+//     }
+//     else if(compSelect == "paper" && playerSelect == "scissors") {
+//         alert(`You win! ${playerSelect} beats ${compSelect}`);
+//     }
+//     else if(compSelect == "scissors" && playerSelect == "rock") {
+//         alert(`You win! ${playerSelect} beats ${compSelect}`);
+//     }
+//     else {
+//         alert(`You Lose! ${compSelect} beats ${playerSelect}`);
+//     }
+// } 
+
+
+
+
