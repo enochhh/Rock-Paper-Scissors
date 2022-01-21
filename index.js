@@ -40,16 +40,24 @@ function playRound(e) {
     else if(
         (compSelect == "rock" && playerSelect == "paper") || (compSelect == "paper" && playerSelect == "scissors") || (compSelect == "scissors" && playerSelect == "rock"))  {
             playerScore++;
-            res.innerText = `You win, ${playerSelect} beats ${compSelect}! You have
-            ${playerScore} points and your opponent has ${compScore} points`;
-    }
+            if (playerScore == 5) {
+                endGame();
+            }
+            else {
+                res.innerText = `You win, ${playerSelect} beats ${compSelect}! You have ${playerScore} points and your opponent has ${compScore} points`;    
+            }
+        }
 
     else if(
         (playerSelect == "rock" && compSelect == "paper") || (playerSelect == "paper" && compSelect == "scissors") || (playerSelect == "scissors" && compSelect == "rock"))  {
             compScore++;
-            res.innerText = `You lose, ${compSelect} beats ${playerSelect}! You have
-            ${playerScore} points and your opponent has ${compScore} points`;
-    }
+            if (compScore == 5) {
+                endGame();
+            }
+            else {
+            res.innerText = `You lose, ${compSelect} beats ${playerSelect}! You have ${playerScore} points and your opponent has ${compScore} points`;
+        }
+    }   
 }
 
 // function playRound(compSelect, playerSelect) {
@@ -74,15 +82,16 @@ function playRound(e) {
 // } 
 
 function endGame() {
-    if (playerScore == 5 || compScore == 5) {
-        if (playerScore == 5) {
-            res.innerText = "You win the game!"
-        }
-
-        else if (compScore == 5) {
-            res.innerText = "Aw, you lost!"
-        }
+    if (playerScore == 5) {
+        res.innerText = "You win the game!"
     }
+
+    else if (compScore == 5) {
+        res.innerText = "Aw, you lost!"
+    }
+    
+    playerScore = 0;
+    compScore = 0;
 } 
 
 
