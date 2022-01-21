@@ -4,6 +4,8 @@ function computerPlay() {
     return weapons[index];
 }
 
+    const res = document.getElementById('results');
+
     const rockBtn = document.getElementById('rock');
     const paperBtn = document.getElementById('paper');
     const scissorsBtn = document.getElementById('scissors');
@@ -28,22 +30,21 @@ function playRound(e) {
     */
  
     const compSelect = computerPlay();
-    console.log(playerSelect);
     
     if(compSelect == playerSelect) {
-        alert(`It's a tie! ${playerSelect} and ${compSelect} are the same.`);
+        res.innerText = `It's a tie, ${playerSelect} and ${compSelect} are the same.`;
     }
     else if(compSelect == "rock" && playerSelect == "paper")  {
-        alert(`You win! ${playerSelect} beats ${compSelect}`);
+        res.innerText = `You win, ${playerSelect} beats ${compSelect}!`;
     }
     else if(compSelect == "paper" && playerSelect == "scissors") {
-        alert(`You win! ${playerSelect} beats ${compSelect}`);
+        res.innerText = `You win, ${playerSelect} beats ${compSelect}!`;
     }
     else if(compSelect == "scissors" && playerSelect == "rock") {
-        alert(`You win! ${playerSelect} beats ${compSelect}`);
+        res.innerText = `You win, ${playerSelect} beats ${compSelect}!`;
     }
     else {
-        alert(`You Lose! ${compSelect} beats ${playerSelect}`);
+        res.innerText = `You lose, ${compSelect} beats ${playerSelect}!`;
     }
 }
 
