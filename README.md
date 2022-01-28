@@ -8,4 +8,4 @@ I got stuck on this error for 2 hours, combing Google and stackOverflow for poss
 
 From this little stumbling block, I was able to learn that the scope of an event object is contained only in the function that is tied to the event listener. It doesn't matter if it is stored in another variable to be used in another function; it doesn't work. 
 
-
+Demo: https://enochhh.github.io/Rock-Paper-Scissors/
